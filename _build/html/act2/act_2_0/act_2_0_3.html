@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'act2/act_2_0/act_2_0_3';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. Python" href="../../act3/act_3_0/act_3_0_1.html" />
+    <link rel="prev" title="5. Code" href="act_2_0_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,7 +156,47 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Challenges</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_1.html">1. Rigor</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_3.html">3. Sloppiness</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="act_2_0_1.html">4. Manuscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="act_2_0_2.html">5. Code</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Git</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeracy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_1.html">7. Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_2.html">8. R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act3/act_3_0/act_3_0_3.html">9. Stata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Literacy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_1.html">10. Open Science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_2.html">11. Self-Publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act4/act_4_0/act_4_0_3.html">12. Grants</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workflow</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_1.html">13. Automate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../act5/act_5_0/act_5_0_2.html">14. Bash</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../act5/act_5_0/act_5_0_3.html">15. Unix</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -276,7 +318,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -292,6 +336,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-committing-your-changes-locally">Step 1: Committing Your Changes Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-push-the-changes-to-your-fork">Step 2: Push the Changes to Your Fork</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-delete-old-folders-and-files-from-abikesa-fena">Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -332,6 +389,81 @@ document.write(`
 <p>To raise clinical research standards, we’re integrating the hub-and-spoke philosophy with tools like Git. This synergy promises work that’s not only of supreme quality but also of profound impact.</p>
 <p><strong>In Conclusion</strong></p>
 <p>Our logo isn’t just a design; it’s a testament to our beliefs and our approach to research. By marrying the hub-and-spoke model with Git, we’re ready to chart new territories in clinical research. Forward, together. 🌍📚🔬🚀</p>
+<hr class="docutils" />
+<p>Quiz: 1</p>
+<Details>
+  <Summary>Folking, Cloning, or Merging?</Summary>
+<p>What are we dealing with in the Git workflow below?</p>
+<ol class="arabic simple">
+<li><p>Forking</p></li>
+<li><p>Cloning</p></li>
+<li><p>Editing</p></li>
+<li><p>Pulling (Main) &amp; Pushing (Fork)</p></li>
+<li><p>Merging</p></li>
+</ol>
+<p>Here’s a step-by-step guide on what is going on:</p>
+<section id="step-1-committing-your-changes-locally">
+<h2>Step 1: Committing Your Changes Locally<a class="headerlink" href="#step-1-committing-your-changes-locally" title="Permalink to this heading">#</a></h2>
+<p>If you haven’t already, make sure all your local changes are committed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Overhauled backend structure&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-push-the-changes-to-your-fork">
+<h2>Step 2: Push the Changes to Your Fork<a class="headerlink" href="#step-2-push-the-changes-to-your-fork" title="Permalink to this heading">#</a></h2>
+<p>Push these commits to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="step-3-delete-old-folders-and-files-from-abikesa-fena">
+<h2>Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code><a class="headerlink" href="#step-3-delete-old-folders-and-files-from-abikesa-fena" title="Permalink to this heading">#</a></h2>
+<p>If you’ve completely overhauled the backend and renamed directories/files, and you’ve committed these changes, then the old folders and files should already be removed from the repository once you’ve pushed the changes.</p>
+<p>However, if you want to make sure, you can manually delete specific files and directories.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>old_folder/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Remove old_folder&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="step-4-syncing-your-fork-with-the-original-jhufena-home">
+<h2>Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)<a class="headerlink" href="#step-4-syncing-your-fork-with-the-original-jhufena-home" title="Permalink to this heading">#</a></h2>
+<p>Before merging changes, it’s a good practice to sync your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) with the original repository (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>).</p>
+<p>First, add the original repository as a remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/jhufena/home.git
+</pre></div>
+</div>
+<p>Fetch the changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+</pre></div>
+</div>
+<p>Merge them into your local repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>upstream/main
+</pre></div>
+</div>
+<p>Finally, push these changes to your fork:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="step-5-creating-a-pull-request">
+<h2>Step 5: Creating a Pull Request<a class="headerlink" href="#step-5-creating-a-pull-request" title="Permalink to this heading">#</a></h2>
+<p>Now that your fork is updated and includes your new structural changes, go to GitHub and create a pull request from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code> to <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Navigate to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p></li>
+<li><p>Click on “Pull Requests.”</p></li>
+<li><p>Click on “New Pull Request.”</p></li>
+<li><p>In the “base repository,” choose <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>, and in “compare,” choose your repository (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>).</p></li>
+</ol>
+<p>Review the changes and submit the pull request. This will notify the maintainers of <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> to review your changes.</p>
+<p>Once approved, the changes can be merged into the <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> repository.</p>
+</section>
+<section id="final-note">
+<h2>Final Note<a class="headerlink" href="#final-note" title="Permalink to this heading">#</a></h2>
+<p>Remember to communicate with the maintainers of the original repository and ensure you have the correct permissions to make these changes. It’s always good to document your changes well to make it easier for maintainers to understand what you’ve done, why you’ve done it, and how it benefits the project.</p>
+</Details>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -365,6 +497,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="act_2_0_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">5. Code</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../act3/act_3_0/act_3_0_1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">7. Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -374,6 +524,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-committing-your-changes-locally">Step 1: Committing Your Changes Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-push-the-changes-to-your-fork">Step 2: Push the Changes to Your Fork</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-delete-old-folders-and-files-from-abikesa-fena">Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
