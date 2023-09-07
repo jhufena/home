@@ -347,6 +347,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-changes">Step 2: Examine the Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-leave-comments-optional">Step 3: Leave Comments (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-your-review">Step 4: Start Your Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-follow-up">Step 5: Follow Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-points-to-consider">Additional Points to Consider</a></li>
 </ul>
             </nav>
         </div>
@@ -463,6 +469,73 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <h2>Final Note<a class="headerlink" href="#final-note" title="Permalink to this heading">#</a></h2>
 <p>Remember to communicate with the maintainers of the original repository and ensure you have the correct permissions to make these changes. It’s always good to document your changes well to make it easier for maintainers to understand what you’ve done, why you’ve done it, and how it benefits the project.</p>
 </Details>
+<hr class="docutils" />
+<p>Quiz: 2</p>
+<Details>
+  <Summary>Pushing or Pulling?</Summary>
+<p>What are we dealing with in the Git workflow below?</p>
+<ol class="arabic simple">
+<li><p>Forking</p></li>
+<li><p>Cloning</p></li>
+<li><p>Editing</p></li>
+<li><p>Pulling (Main) &amp; Pushing (Fork)</p></li>
+<li><p>Merging</p></li>
+</ol>
+<p>Reviewing a pull request involves examining the changes made in the request and providing feedback, approval, or requests for changes. Here’s how you can review a pull request on GitHub:</p>
+</section>
+<section id="step-1-navigate-to-the-pull-request">
+<h2>Step 1: Navigate to the Pull Request<a class="headerlink" href="#step-1-navigate-to-the-pull-request" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Go to the repository where the pull request has been submitted.</p></li>
+<li><p>Click on the “Pull requests” tab.</p></li>
+<li><p>Click on the pull request you want to review.</p></li>
+</ol>
+</section>
+<section id="step-2-examine-the-changes">
+<h2>Step 2: Examine the Changes<a class="headerlink" href="#step-2-examine-the-changes" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>You will see an “Files changed” tab, which will display all the changes made in the pull request.</p></li>
+<li><p>You can view changes side by side or inline, and toggle between “Showing changes” and “Hide whitespace changes” to make it easier to see what’s been modified.</p></li>
+<li><p>You can also use the “Review changes” drop-down to jump to specific changes.</p></li>
+</ol>
+</section>
+<section id="step-3-leave-comments-optional">
+<h2>Step 3: Leave Comments (Optional)<a class="headerlink" href="#step-3-leave-comments-optional" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>If you find areas that require attention or clarification, hover over the line of code and click the blue plus icon that appears.</p></li>
+<li><p>This will allow you to leave a comment. Type your comment and either save it for later or start a review.</p></li>
+</ol>
+</section>
+<section id="step-4-start-your-review">
+<h2>Step 4: Start Your Review<a class="headerlink" href="#step-4-start-your-review" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Click the “Review changes” button in the top right of the “Files changed” tab.</p></li>
+<li><p>Choose one of the following options:</p>
+<ul class="simple">
+<li><p><strong>Comment</strong>: To leave general comments without approving or requesting additional changes.</p></li>
+<li><p><strong>Approve</strong>: To accept the changes as they are.</p></li>
+<li><p><strong>Request changes</strong>: To ask for modifications before the pull request can be merged.</p></li>
+</ul>
+</li>
+<li><p>Add additional comments in the text box.</p></li>
+<li><p>Click “Submit review”.</p></li>
+</ol>
+</section>
+<section id="step-5-follow-up">
+<h2>Step 5: Follow Up<a class="headerlink" href="#step-5-follow-up" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If you’ve requested changes, keep an eye on the pull request to see if the author pushes the requested changes.</p></li>
+<li><p>If you’ve approved the pull request, it’s up to the repository maintainers to merge it. You may also be able to merge it yourself, depending on your permissions.</p></li>
+</ul>
+</section>
+<section id="additional-points-to-consider">
+<h2>Additional Points to Consider<a class="headerlink" href="#additional-points-to-consider" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Check for code quality, functionality, and whether the changes align with the project’s goals.</p></li>
+<li><p>Make sure that all tests pass if the project has automated testing integrated.</p></li>
+</ul>
+<p>That’s a high-level overview. The exact steps may differ slightly based on your specific permissions and the repository settings.</p>
+</Details>
 </section>
 </section>
 
@@ -539,6 +612,12 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-changes">Step 2: Examine the Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-leave-comments-optional">Step 3: Leave Comments (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-your-review">Step 4: Start Your Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-follow-up">Step 5: Follow Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-points-to-consider">Additional Points to Consider</a></li>
 </ul>
   </nav></div>
 
