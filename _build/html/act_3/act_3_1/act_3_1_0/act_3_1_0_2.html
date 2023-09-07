@@ -393,6 +393,73 @@ rm<span class="w"> </span>-rf<span class="w"> </span>home
 </pre></div>
 </div>
 <Details>
+  <Summary>Generalizing .sh script and thereby segue to automation on a Unix terminal</Summary>
+<p>Certainly, you can generalize the given script to make it more adaptable. Here’s how you could do that using Bash scripting variables and parameterization:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Parameters</span>
+<span class="nv">GITHUB_USER</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">GITHUB_REPO</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">LOCAL_DIR</span><span class="o">=</span><span class="nv">$3</span>
+<span class="nv">COMMIT_MSG</span><span class="o">=</span><span class="nv">$4</span>
+<span class="nv">SSH_KEYNAME</span><span class="o">=</span><span class="nv">$5</span>
+<span class="nv">EMAIL</span><span class="o">=</span><span class="nv">$6</span>
+
+<span class="c1"># Folked from some_repo/beta</span>
+git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">/*&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">&quot;</span>
+jb<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">&quot;</span>
+cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">/*&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$COMMIT_MSG</span><span class="s2">&quot;</span>
+
+<span class="c1"># Overcoming the error: no sufficient permissions</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_USER</span><span class="s2">&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># Generate a new SSH key</span>
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">*&quot;</span>
+ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
+cat<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">.pub&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Please manually add the above SSH public key to your GitHub account&#39;s SSH keys.&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span>--apple-use-keychain<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
+
+<span class="c1"># Configure the remote URL with SSH</span>
+git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+
+<span class="c1"># Push changes</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>_build/html
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;jb content updated &amp; pushed to </span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2"> repository!&quot;</span>
+</pre></div>
+</div>
+<p>Usage example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./your_script.sh<span class="w"> </span>jhufena<span class="w"> </span>home<span class="w"> </span>our<span class="w"> </span><span class="s2">&quot;commit message&quot;</span><span class="w"> </span>id_ourhome<span class="w"> </span>jhufena@gmail.com
+</pre></div>
+</div>
+<p>Here are what the parameters are supposed to be:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GITHUB_USER</span></code>: GitHub username</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GITHUB_REPO</span></code>: GitHub repository name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL_DIR</span></code>: Local directory name where the repo is copied</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMMIT_MSG</span></code>: Commit message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SSH_KEYNAME</span></code>: SSH key name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMAIL</span></code>: Email associated with the GitHub account</p></li>
+</ol>
+<p>Make sure to provide executable permissions to your script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>your_script.sh
+</pre></div>
+</div>
+<p>This makes the script more reusable and adaptable to different scenarios.</p>
+</Details>
+<Details>
   <summary>Another example of a `bash` script that will run a `Stata` do-file (see previous section for more):</summary>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-l
 total<span class="w"> </span><span class="m">376</span>
