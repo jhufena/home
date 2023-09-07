@@ -356,8 +356,44 @@ document.write(`
 <h1>14. Bash<a class="headerlink" href="#bash" title="Permalink to this heading">#</a></h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DCcQCnNYgj0?autoplay=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>A <code class="docutils literal notranslate"><span class="pre">bash</span></code> script can combine any number of tasks or even more complex operations, and when executed, it will <strong>run</strong> each command in the specified order. This allows for automation and streamlining of tasks that might be time-consuming or <strong>error-prone</strong> if performed manually.</p>
-<p>Here’s an example of a <code class="docutils literal notranslate"><span class="pre">bash</span></code> script that will run a <code class="docutils literal notranslate"><span class="pre">Stata</span></code> do-file (see previous section for more):</p>
+<p>One example here describes how the beta-version of this platform was folked &amp; cloned. The script is available:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Folked from jhutrc/beta</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jhufena/home
+cp<span class="w"> </span>-r<span class="w"> </span>home/*<span class="w"> </span>our
+jb<span class="w"> </span>build<span class="w"> </span>our
+cp<span class="w"> </span>-r<span class="w"> </span>our/*<span class="w"> </span>home
+<span class="nb">cd</span><span class="w"> </span>home
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;jhutrc/beta -&gt; folks jhufena/home -&gt; clone and copy -&gt; our/home&quot;</span>
+
+<span class="c1"># overcoming the error: no sufficient permissions</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:jhufena/home&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;jhufena&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;jhufena@gmail.com&quot;</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># Generate a new SSH key</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>~/.ssh/id_ourhome*
+ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;jhufena@gmail.com&quot;</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_ourhome
+cat<span class="w"> </span>~/.ssh/id_ourhome.pub
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Please manually add the above SSH public key to your GitHub account&#39;s SSH keys.&quot;</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span>--apple-use-keychain<span class="w"> </span>~/.ssh/id_ourhome
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/id_ourhome
+
+<span class="c1"># Configure the remote URL with SSH</span>
+git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:jhufena/home&quot;</span>
+
+<span class="c1"># Push changes</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>_build/html
+rm<span class="w"> </span>-rf<span class="w"> </span>home
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;jb content updated &amp; pushed to jhufena/home repository!&quot;</span>
+</pre></div>
+</div>
 <Details>
+  <summary>Another example of a `bash` script that will run a `Stata` do-file (see previous section for more):</summary>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>myenv<span class="o">)</span><span class="w"> </span>d@Poseidon<span class="w"> </span><span class="m">1</span>.ontology<span class="w"> </span>%<span class="w"> </span>ls<span class="w"> </span>-l
 total<span class="w"> </span><span class="m">376</span>
 -rw-r--r--@<span class="w">   </span><span class="m">1</span><span class="w"> </span>d<span class="w">  </span>staff<span class="w">   </span><span class="m">2983</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">19</span>:18<span class="w"> </span>README.md
