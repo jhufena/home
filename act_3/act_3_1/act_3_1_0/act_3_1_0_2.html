@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>14. Bash &#8212; Challenges, Skills, and Opportunities</title>
   
@@ -397,38 +397,46 @@ rm<span class="w"> </span>-rf<span class="w"> </span>home
 <p>Certainly, you can generalize the given script to make it more adaptable. Here’s how you could do that using Bash scripting variables and parameterization:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># Parameters</span>
-<span class="nv">GITHUB_USER</span><span class="o">=</span><span class="nv">$1</span>
-<span class="nv">GITHUB_REPO</span><span class="o">=</span><span class="nv">$2</span>
-<span class="nv">LOCAL_DIR</span><span class="o">=</span><span class="nv">$3</span>
-<span class="nv">COMMIT_MSG</span><span class="o">=</span><span class="nv">$4</span>
-<span class="nv">SSH_KEYNAME</span><span class="o">=</span><span class="nv">$5</span>
-<span class="nv">EMAIL</span><span class="o">=</span><span class="nv">$6</span>
+<span class="c1"># Parameters required by the script</span>
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your GitHub username (e.g., abikesa): &quot;</span><span class="w"> </span>GITHUB_USER
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your GitHub repository name (e.g., nabongo): &quot;</span><span class="w"> </span>GITHUB_REPO
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your email address (e.g., abikesa.sh@gmail.com): &quot;</span><span class="w"> </span>EMAIL_ADDRESS
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your root directory (e.g., ~/Dropbox/1f.ἡἔρις,κ/1.ontology): &quot;</span><span class="w"> </span>ROOT_DIR
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter the name of the local directory to be created within the root directory (e.g., charles): &quot;</span><span class="w"> </span>LOCAL_DIR
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter the SSH key name (e.g., id_charlesnabongo): &quot;</span><span class="w"> </span>SSH_KEYNAME
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your git commit message (e.g., automated abikesa_fromfolks.sh script): &quot;</span><span class="w"> </span>GIT_COMMIT_MESSAGE
 
 <span class="c1"># Folked from some_repo/beta</span>
+<span class="nb">cd</span><span class="w"> </span><span class="k">$(</span><span class="nb">eval</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ROOT_DIR</span><span class="k">)</span>
 git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
 cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">/*&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">&quot;</span>
 jb<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">&quot;</span>
 cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOCAL_DIR</span><span class="s2">/*&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
 <span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
 git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$COMMIT_MSG</span><span class="s2">&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GIT_COMMIT_MESSAGE</span><span class="s2">&quot;</span>
 
 <span class="c1"># Overcoming the error: no sufficient permissions</span>
 git<span class="w"> </span>remote<span class="w"> </span>-v
 git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
 git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GITHUB_USER</span><span class="s2">&quot;</span>
-git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL_ADDRESS</span><span class="s2">&quot;</span>
 git<span class="w"> </span>checkout<span class="w"> </span>main
 
-<span class="c1"># Generate a new SSH key</span>
-rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">*&quot;</span>
-ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
-cat<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">.pub&quot;</span>
+<span class="c1"># Check if SSH keys already exist, and if not, generate a new one</span>
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Enter your SSH key name (e.g., id_charlesnabongo, not ~/.ssh/id_charlesnabongo): &quot;</span><span class="w"> </span>SSH_KEYNAME
+<span class="nv">SSH_KEYPATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_KEYPATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$EMAIL_ADDRESS</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$SSH_KEYPATH</span>
+<span class="k">fi</span>
+
+cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SSH_KEYPATH</span><span class="s2">.pub&quot;</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Please manually add the above SSH public key to your GitHub account&#39;s SSH keys.&quot;</span>
+<span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Once you have added the SSH key to your GitHub account, press Enter to continue...&quot;</span>
 <span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
-ssh-add<span class="w"> </span>--apple-use-keychain<span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
-chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="s2">&quot;~/.ssh/</span><span class="nv">$SSH_KEYNAME</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span><span class="nv">$SSH_KEYPATH</span>
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="nv">$SSH_KEYPATH</span>
 
 <span class="c1"># Configure the remote URL with SSH</span>
 git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span><span class="s2">&quot;git@github.com:</span><span class="nv">$GITHUB_USER</span><span class="s2">/</span><span class="nv">$GITHUB_REPO</span><span class="s2">&quot;</span>
