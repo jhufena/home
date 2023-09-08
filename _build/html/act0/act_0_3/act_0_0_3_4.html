@@ -345,6 +345,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5</a></li>
 </ul>
 </li>
 </ul>
@@ -815,7 +816,91 @@ mepoisson donations || summer:, irr iter(<span class="m">3</span>)
 </div>
 <p>You can inspect the <code class="docutils literal notranslate"><span class="pre">trace</span></code> object to look at parameter estimates and other diagnostic information.</p>
 <p>Remember that this is a simplified example, and you’ll need to adjust the models according to your actual data and research questions.</p>
+</section>
 <hr class="docutils" />
+<section id="id5">
+<h4>5<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p>Certainly, I can help translate your Stata script (combining individual-level and group-level data) to R code. Below is the equivalent R code that should accomplish the same tasks you’ve laid out in the Stata script.</p>
+<p>Firstly, you would need to install and load the required R packages if you haven’t already:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;data.table&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ggplot2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lme4&quot;</span><span class="p">))</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, let’s move on to the script.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># Document session using .log file</span>
+<span class="nf">sink</span><span class="p">(</span><span class="s">&quot;poisson.log&quot;</span><span class="p">)</span>
+
+<span class="c1"># Setting timeout to 10000 milliseconds</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">)</span>
+
+<span class="c1"># Comment indicating external data source</span>
+<span class="n">repo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://github.com/muzaale/got/raw/main/act_5/act_5_9/&quot;</span>
+
+<span class="c1"># Actual loading of data</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;donor_live_keep.dta&quot;</span><span class="p">))</span>
+
+<span class="c1"># Change directory and load the dataset</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;~/dropbox/1f.ἡἔρις,κ/1.ontology&quot;</span><span class="p">)</span>
+
+<span class="c1"># Recode donor relationship and race variables</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">related</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">don_relation</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+<span class="w">         </span><span class="n">racecat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<span class="w">           </span><span class="n">don_race</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+<span class="w">           </span><span class="kc">TRUE</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">5</span>
+<span class="w">         </span><span class="p">))</span>
+
+<span class="c1"># Create year and month variables based on donation recovery date</span>
+<span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">don_recov_dt</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;%Y&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">don_recov_dt</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;%m&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tabulate donations by year</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">year</span><span class="p">)</span>
+
+<span class="c1"># Tabulate month and calculate the June-to-January ratio</span>
+<span class="n">month_tab</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">month</span><span class="p">)</span>
+<span class="n">freq_jan</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">month_tab</span><span class="p">[</span><span class="s">&quot;01&quot;</span><span class="p">]</span>
+<span class="n">freq_jun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">month_tab</span><span class="p">[</span><span class="s">&quot;06&quot;</span><span class="p">]</span>
+<span class="n">ratio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">freq_jun</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">freq_jan</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
+
+<span class="c1"># Create a constant variable &#39;count&#39; and recode &#39;month&#39; for summer vs. rest of the year</span>
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">         </span><span class="n">summer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">month</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;06&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;07&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;08&quot;</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">))</span>
+
+<span class="c1"># Collapsing the data (your comment indicated this as more efficient than &quot;collapse&quot;)</span>
+<span class="nf">if </span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">summer</span><span class="p">,</span><span class="w"> </span><span class="n">related</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">summarise</span><span class="p">(</span><span class="n">n_month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="c1"># Running single-level Poisson model first to get starting estimates</span>
+<span class="n">poisson_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">donations</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">summer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">related</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="n">start_vals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">poisson_model</span><span class="p">)</span>
+
+<span class="c1"># Placeholder for setting initial estimates</span>
+<span class="c1"># To check the starting values before using them</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">start_vals</span><span class="p">)</span>
+
+<span class="c1"># Run multilevel Poisson model using initial estimates (measured in iterations)</span>
+<span class="c1"># Uncomment this block if you want to proceed with the multilevel Poisson model</span>
+<span class="nf">if </span><span class="p">(</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">mepoisson_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glmer</span><span class="p">(</span><span class="n">donations</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">summer</span><span class="p">),</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_vals</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Close the log</span>
+<span class="nf">sink</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This should accomplish the same tasks as your original Stata code. Let me know if you have any questions or need further clarification.</p>
 </section>
 </section>
 </section>
@@ -876,6 +961,7 @@ mepoisson donations || summer:, irr iter(<span class="m">3</span>)
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5</a></li>
 </ul>
 </li>
 </ul>
