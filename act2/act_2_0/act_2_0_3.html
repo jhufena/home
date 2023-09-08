@@ -318,9 +318,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -336,25 +334,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-committing-your-changes-locally">Step 1: Committing Your Changes Locally</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-push-the-changes-to-your-fork">Step 2: Push the Changes to Your Fork</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-delete-old-folders-and-files-from-abikesa-fena">Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-changes">Step 2: Examine the Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-leave-comments-optional">Step 3: Leave Comments (Optional)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-your-review">Step 4: Start Your Review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-follow-up">Step 5: Follow Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-points-to-consider">Additional Points to Consider</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -383,7 +362,7 @@ document.write(`
 <p><strong>No Hierarchy, Just Convergence</strong></p>
 <p>True to the hub-and-spoke model, our ethos is rooted in equality. Whether one’s at the periphery or closer to the hub, every voice is pivotal. Seasoned academicians, budding researchers, and every spoke in between, drive us forward.</p>
 <p><strong>Git: Our Collaboration Hub</strong></p>
-<p>Our “hub,” in many respects, is Git. Just as every spoke feeds into the central hub, <a class="reference internal" href="act_1_0_1_2.html"><span class="doc std std-doc">Git’s version control</span></a> prowess ensures that every contribution weaves seamlessly into our collective tapestry, without overriding or lost fragments.</p>
+<p>Our “hub,” in many respects, is Git. Just as every spoke feeds into the central hub, <span class="xref myst">Git’s version control</span> prowess ensures that every contribution weaves seamlessly into our collective tapestry, without overriding or lost fragments.</p>
 <p><strong>Branching Out and Converging</strong></p>
 <p>Every spoke on our logo signifies freedom — the freedom to branch out and innovate (see video below for step-by-step guide). With Git, these branches allow us to experiment without disturbing the core. Yet, they always have a path back to the hub, ensuring harmonious integration.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/R6l2PxN10eo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
@@ -408,23 +387,18 @@ document.write(`
 <li><p>Merging</p></li>
 </ol>
 <p>Here’s a step-by-step guide on what is going on:</p>
-<section id="step-1-committing-your-changes-locally">
-<h2>Step 1: Committing Your Changes Locally<a class="headerlink" href="#step-1-committing-your-changes-locally" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 1: Committing Your Changes Locally</strong></p>
 <p>If you haven’t already, make sure all your local changes are committed.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
 git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Overhauled backend structure&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="step-2-push-the-changes-to-your-fork">
-<h2>Step 2: Push the Changes to Your Fork<a class="headerlink" href="#step-2-push-the-changes-to-your-fork" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 2: Push the Changes to Your Fork</strong></p>
 <p>Push these commits to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-</section>
-<section id="step-3-delete-old-folders-and-files-from-abikesa-fena">
-<h2>Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code><a class="headerlink" href="#step-3-delete-old-folders-and-files-from-abikesa-fena" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></strong></p>
 <p>If you’ve completely overhauled the backend and renamed directories/files, and you’ve committed these changes, then the old folders and files should already be removed from the repository once you’ve pushed the changes.</p>
 <p>However, if you want to make sure, you can manually delete specific files and directories.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>old_folder/
@@ -432,9 +406,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-</section>
-<section id="step-4-syncing-your-fork-with-the-original-jhufena-home">
-<h2>Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)<a class="headerlink" href="#step-4-syncing-your-fork-with-the-original-jhufena-home" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</strong></p>
 <p>Before merging changes, it’s a good practice to sync your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) with the original repository (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>).</p>
 <p>First, add the original repository as a remote:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/jhufena/home.git
@@ -452,9 +424,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-</section>
-<section id="step-5-creating-a-pull-request">
-<h2>Step 5: Creating a Pull Request<a class="headerlink" href="#step-5-creating-a-pull-request" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 5: Creating a Pull Request</strong></p>
 <p>Now that your fork is updated and includes your new structural changes, go to GitHub and create a pull request from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code> to <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>.</p>
 <ol class="arabic simple">
 <li><p>Navigate to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p></li>
@@ -464,9 +434,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </ol>
 <p>Review the changes and submit the pull request. This will notify the maintainers of <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> to review your changes.</p>
 <p>Once approved, the changes can be merged into the <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> repository.</p>
-</section>
-<section id="final-note">
-<h2>Final Note<a class="headerlink" href="#final-note" title="Permalink to this heading">#</a></h2>
+<p><strong>Final Note</strong></p>
 <p>Remember to communicate with the maintainers of the original repository and ensure you have the correct permissions to make these changes. It’s always good to document your changes well to make it easier for maintainers to understand what you’ve done, why you’ve done it, and how it benefits the project.</p>
 </Details>
 <hr class="docutils" />
@@ -482,32 +450,24 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li><p>Merging</p></li>
 </ol>
 <p>Reviewing a pull request involves examining the changes made in the request and providing feedback, approval, or requests for changes. Here’s how you can review a pull request on GitHub:</p>
-</section>
-<section id="step-1-navigate-to-the-pull-request">
-<h2>Step 1: Navigate to the Pull Request<a class="headerlink" href="#step-1-navigate-to-the-pull-request" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 1: Navigate to the Pull Request</strong></p>
 <ol class="arabic simple">
 <li><p>Go to the repository where the pull request has been submitted.</p></li>
 <li><p>Click on the “Pull requests” tab.</p></li>
 <li><p>Click on the pull request you want to review.</p></li>
 </ol>
-</section>
-<section id="step-2-examine-the-changes">
-<h2>Step 2: Examine the Changes<a class="headerlink" href="#step-2-examine-the-changes" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 2: Examine the Changes</strong></p>
 <ol class="arabic simple">
 <li><p>You will see an “Files changed” tab, which will display all the changes made in the pull request.</p></li>
 <li><p>You can view changes side by side or inline, and toggle between “Showing changes” and “Hide whitespace changes” to make it easier to see what’s been modified.</p></li>
 <li><p>You can also use the “Review changes” drop-down to jump to specific changes.</p></li>
 </ol>
-</section>
-<section id="step-3-leave-comments-optional">
-<h2>Step 3: Leave Comments (Optional)<a class="headerlink" href="#step-3-leave-comments-optional" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 3: Leave Comments (Optional)</strong></p>
 <ol class="arabic simple">
 <li><p>If you find areas that require attention or clarification, hover over the line of code and click the blue plus icon that appears.</p></li>
 <li><p>This will allow you to leave a comment. Type your comment and either save it for later or start a review.</p></li>
 </ol>
-</section>
-<section id="step-4-start-your-review">
-<h2>Step 4: Start Your Review<a class="headerlink" href="#step-4-start-your-review" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 4: Start Your Review</strong></p>
 <ol class="arabic simple">
 <li><p>Click the “Review changes” button in the top right of the “Files changed” tab.</p></li>
 <li><p>Choose one of the following options:</p>
@@ -520,23 +480,18 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li><p>Add additional comments in the text box.</p></li>
 <li><p>Click “Submit review”.</p></li>
 </ol>
-</section>
-<section id="step-5-follow-up">
-<h2>Step 5: Follow Up<a class="headerlink" href="#step-5-follow-up" title="Permalink to this heading">#</a></h2>
+<p><strong>Step 5: Follow Up</strong></p>
 <ul class="simple">
 <li><p>If you’ve requested changes, keep an eye on the pull request to see if the author pushes the requested changes.</p></li>
 <li><p>If you’ve approved the pull request, it’s up to the repository maintainers to merge it. You may also be able to merge it yourself, depending on your permissions.</p></li>
 </ul>
-</section>
-<section id="additional-points-to-consider">
-<h2>Additional Points to Consider<a class="headerlink" href="#additional-points-to-consider" title="Permalink to this heading">#</a></h2>
+<p><strong>Additional Points to Consider</strong></p>
 <ul class="simple">
 <li><p>Check for code quality, functionality, and whether the changes align with the project’s goals.</p></li>
 <li><p>Make sure that all tests pass if the project has automated testing integrated.</p></li>
 </ul>
 <p>That’s a high-level overview. The exact steps may differ slightly based on your specific permissions and the repository settings.</p>
 </Details>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -597,31 +552,6 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-committing-your-changes-locally">Step 1: Committing Your Changes Locally</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-push-the-changes-to-your-fork">Step 2: Push the Changes to Your Fork</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-delete-old-folders-and-files-from-abikesa-fena">Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-syncing-your-fork-with-the-original-jhufena-home">Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-creating-a-pull-request">Step 5: Creating a Pull Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">Final Note</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-changes">Step 2: Examine the Changes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-leave-comments-optional">Step 3: Leave Comments (Optional)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-start-your-review">Step 4: Start Your Review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-follow-up">Step 5: Follow Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-points-to-consider">Additional Points to Consider</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
