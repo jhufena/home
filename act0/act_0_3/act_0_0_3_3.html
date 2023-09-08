@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title> &#8212; Challenges, Skills, and Tools</title>
+    <title>&lt;no title&gt; &#8212; Challenges, Skills, and Tools</title>
   
   
   
@@ -329,7 +329,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -338,10 +338,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#current-version-has-addressed-these-issues-but-perform-a-checklist-during-the-next-meeting">Current version has addressed these issues; but perform a checklist during the next meeting</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -375,6 +372,8 @@ document.write(`
 <li><p><strong>Methodology</strong>:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="act_0_0_3_4.html"><span class="doc std std-doc">Revamp entire analysis</span></a> using <code class="docutils literal notranslate"><span class="pre">group-level</span> <span class="pre">and</span> <span class="pre">individual-level</span> <span class="pre">predictors</span></code>.</p></li>
+<li><p>This gives preliminary Stata and R code for the analysis.</p></li>
+<li><p>Andrew may now trouble-shoot the code provided by GPT-4 and make necessary changes.</p></li>
 </ul>
 </li>
 <li><p><strong>Results</strong>:</p>
@@ -384,22 +383,21 @@ document.write(`
 </li>
 <li><p><strong>Discussion</strong>:</p>
 <ul class="simple">
-<li><p>Emphasizing significance of seasonal variation and potential implications.</p></li>
+<li><p>Entire paper now focusing on Seasons rather than months.</p></li>
+<li><p>We have sufficient power to detect seasonality in kidney donation for related donors.</p></li>
+<li><p>For unrelated donors the power is low, but we believe that the seasonality is there.</p></li>
+<li><p><strong>Remark: This is the first-ever identified modifiable factor for kidney donation.</strong></p></li>
 </ul>
 </li>
 <li><p><strong>Current Status</strong>:</p>
 <ul class="simple">
-<li><p>Andrew made his first direct commit on 8/31, focusing on the figures.</p></li>
-<li><p>He did not update using immediately preceding version, so the commit history is not accurate.</p></li>
-<li><p>Problem might have come from Abi’s misleading commit message on 8/30 “This is just for demo purposes”.</p></li>
-<li><p>The only demo was in the title but substantive edits were made to the intro, methods, results, and discussion</p></li>
-<li><p><strong>Let’s discuss this in our next meeting</strong>.</p></li>
+<li><p>Andrew to reconcile last 3 seasons.docx commits in next commit.</p></li>
+<li><p>We have decided on the final figures for the paper.</p></li>
 </ul>
 </li>
 <li><p><strong>Next Steps</strong>:</p>
 <ul class="simple">
-<li><p>Wait for comments from Fawaz before we schedule the next meeting.</p></li>
-<li><p>Encourage Fawaz to make direct commits to the manuscript!!</p></li>
+<li><p>Regressions including group-level and individual-level predictors coming…</p></li>
 </ul>
 </li>
 <li><p><strong>Remark</strong>:</p></li>
@@ -415,102 +413,6 @@ document.write(`
 <li><p>Please don’t be afraid of making extensive comments to a version or even a mistake.</p></li>
 <li><p>We can always revert to a previous version if needed :)</p></li>
 </ul>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="current-version-has-addressed-these-issues-but-perform-a-checklist-during-the-next-meeting">
-<h1>Current version has addressed these issues; but perform a checklist during the next meeting<a class="headerlink" href="#current-version-has-addressed-these-issues-but-perform-a-checklist-during-the-next-meeting" title="Permalink to this heading">#</a></h1>
-<p><span style="font-size: 1.2em; font-weight: bold; position: relative; top: 0.0em;">Subject: Revisions and Feedback on Seasons.docx Manuscript</span></p>
-<p>Dear Andrew and Abi,</p>
-<p>I hope this message finds you well. First, let me congratulate Andrew on the significant improvements made to the manuscript so far. The revisions have brought it a long way. However, I believe we should further refine the manuscript by adjusting some figures and emphasizing our key findings more effectively.</p>
-<p><span style="font-size: 1.2em; font-weight: bold; position: relative; top: 0.0em;">Background and Take-Home Message:</span></p>
-<p><strong>Rationale:</strong> The decline in living kidney donors over the past two decades has been notably due to a decrease in biologically related donors. Our study aims to identify modifiable factors to reverse this trend.</p>
-<p><strong>Conclusion:</strong> Our findings indicate that biologically related donors from lower and middle income tiers, based on Zip-code, show an increase in donations during the summer. We advocate for targeted programs that can help these groups expand donations in the summer while also overcoming barriers in other seasons.</p>
-<p><span style="font-size: 1.2em; font-weight: bold; position: relative; top: 0.0em;">General Points:</span></p>
-<ul class="simple">
-<li><p>Please update the study time window to 1990-2019 in all figures, tables, and texts.</p></li>
-<li><p>Figure 2 is particularly compelling as it highlights the summer peak in donations across the 1990s, 2000s, and 2010s.</p></li>
-</ul>
-<p><span style="font-size: 1.2em; font-weight: bold; position: relative; top: 0.0em;">Minor Points:</span></p>
-<ol class="arabic simple">
-<li><p><strong>Figure 1:</strong> Limit the time window to 1990-2019.</p></li>
-<li><p><strong>Figure 2:</strong></p>
-<ul class="simple">
-<li><p>Thin the lines slightly for better readability.</p></li>
-<li><p>Adjust Y-axis label to “U.S. Monthly Living Kidney Donation” (and clarify in a footnote that this reflects the median).</p></li>
-</ul>
-</li>
-<li><p><strong>Figure 3:</strong></p>
-<ul class="simple">
-<li><p>For the legend, use “lowest, middle, highest tertile” instead of 1st, 2nd, and 3rd.</p></li>
-<li><p>Y-axis label should read “Donation Incidence Rate Ratio.”</p></li>
-</ul>
-</li>
-</ol>
-<p><span style="font-size: 1.2em; font-weight: bold; position: relative; top: 0.0em;">Major Points:</span></p>
-<ol class="arabic simple">
-<li><p><strong>Figure 2 Revisions:</strong></p>
-<ul class="simple">
-<li><p>Keep the Y-axis the same.</p></li>
-<li><p>Adjust the X-axis to span from 1990 to 2019.</p></li>
-<li><p>Change the trend category from “Era” to “Season.”</p></li>
-</ul>
-</li>
-<li><p><strong>Figure 3 Revisions:</strong></p>
-<ul class="simple">
-<li><p>Keep the Y-axis the same.</p></li>
-<li><p>Adjust the X-axis to reflect seasons.</p></li>
-<li><p>Stratify this revised Figure 3 by race/ethnicity:</p>
-<ul>
-<li><p>Among White</p></li>
-<li><p>Among Black</p></li>
-<li><p>Among Asian</p></li>
-<li><p>Among Hispanic</p></li>
-<li><p>Exclude other races from this figure for consistency with previous studies but mention them in Table 1 under “Others.”</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>I am available to meet for further discussions this coming week, as needed. For urgent matters, please feel free to text me at 720-401-9364.</p>
-<p>Together, we can make impactful contributions to this field.</p>
-<p>Best regards,
-Fawaz</p>
-</section>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>1<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
-<p>Subject: Summary of Project Contributions and Upcoming Meeting Agenda</p>
-<p>Dear Team,</p>
-<p>I hope this message finds you well. I wanted to summarize the contributions made so far to our ongoing project and outline the agenda for our upcoming meeting.</p>
-<ol class="arabic simple">
-<li><p>Andrew has made substantive edits focusing solely on the figures, without altering the main body of the text.</p></li>
-<li><p>Abi has provided valuable comments and suggestions, covering both Andrew’s edits to the figures and the original text.</p></li>
-<li><p>Fawaz has offered extensive insights via email, though these have not yet been applied directly to the manuscript.</p></li>
-</ol>
-<p><strong>Upcoming Meeting Agenda:</strong></p>
-<ul class="simple">
-<li><p>Brief Introduction to GitHub Commits</p>
-<ul>
-<li><p>Familiarize everyone with the use of GitHub for version control. Adopting this practice will make our workflow more efficient, eliminating the need for individual update summaries like this one moving forward.</p></li>
-</ul>
-</li>
-<li><p>Discuss of Edits and suggestions from Andrew, Abi, and Fawaz</p>
-<ul>
-<li><p>This session will focus on the substantive edits and suggestions made by Andrew, Abi, and Fawaz. We will discuss these in detail and decide how to incorporate them into the manuscript.</p></li>
-</ul>
-</li>
-<li><p>Commit to the next steps for the project</p>
-<ul>
-<li><p>We will discuss the timeline for completing the the edits and submitting the manuscript to coautahors for review.</p></li>
-</ul>
-</li>
-</ul>
-<p>Looking forward to our collaborative progress!</p>
-<p>Best regards,</p>
-<p>Abi</p>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -560,10 +462,7 @@ Fawaz</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#current-version-has-addressed-these-issues-but-perform-a-checklist-during-the-next-meeting">Current version has addressed these issues; but perform a checklist during the next meeting</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
 
   </nav></div>
