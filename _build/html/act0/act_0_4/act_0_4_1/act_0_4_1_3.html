@@ -7,9 +7,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Challenges, Skills, and Tools</title>
+    <title> &#8212; Challenges, Skills, and Tools</title>
   
   
   
@@ -316,9 +316,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -329,19 +327,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -351,45 +341,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>1.1 Install the relevant packages</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressWarnings</span><span class="p">({</span>
-<span class="w">  </span><span class="nf">invisible</span><span class="p">({</span>
-<span class="w">    </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
-
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;icdpicr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;dplyr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;readr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">  </span><span class="p">})</span>
-<span class="p">})</span>
-</pre></div>
-</div>
-<p>1.2 Get some documentation</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="s">&quot;package:icdpicr&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>1.3 Study the syntax</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">cat_trauma</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>1.4 What is the value of dx_pre?</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">injury</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>1.5 As such, the syntax is:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># use subset of injury given its size</span>
-<span class="n">inj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injury</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
-<span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">inj</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="c1"># visualize the output</span>
-<span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
-</pre></div>
-</div>
-<hr class="docutils" />
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -431,20 +385,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>&lt;no title&gt; &#8212; Challenges, Skills, and Tools</title>
   
@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'act0/act_0_4/act_0_0_4_3';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -351,45 +353,464 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>1.1 Install the relevant packages</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">suppressWarnings</span><span class="p">({</span>
-<span class="w">  </span><span class="nf">invisible</span><span class="p">({</span>
-<span class="w">    </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
+  <ol class="arabic simple">
+<li><p>Install the relevant packages</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">suppressWarnings</span><span class="p">({</span>
+<span class="w">     </span><span class="nf">invisible</span><span class="p">({</span>
+<span class="w">       </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
 
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;icdpicr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;dplyr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;readr&#39;</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;icdpicr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;dplyr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;readr&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyr&#39;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">  </span><span class="p">})</span>
-<span class="p">})</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">icdpicr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">       </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">     </span><span class="p">})</span>
+<span class="w">   </span><span class="p">})</span>
 </pre></div>
 </div>
-<p>1.2 Get some documentation</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="s">&quot;package:icdpicr&quot;</span><span class="p">)</span>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Get some documentation</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">ls</span><span class="p">(</span><span class="s">&quot;package:icdpicr&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>1.3 Study the syntax</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">cat_trauma</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'cat_trauma'</li><li>'injury'</li></ol>
+</div></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Study the syntax</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">cat_trauma</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
 </div>
-<p>1.4 What is the value of dx_pre?</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">injury</span><span class="p">)</span>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>function (df, dx_pre, icd10, i10_iss_method, calc_method = 1, 
+    verbose = FALSE) 
+{
+    if (!is.data.frame(df)) 
+        stop(&quot;First argument must be a dataframe&quot;)
+    if (NROW(df) == 0) 
+        stop(&quot;Data contains no observations. It must contain at least one row.&quot;)
+    if (!is.character(dx_pre)) 
+        stop(&quot;Second argument must be a character string&quot;)
+    if (make.names(dx_pre) != dx_pre) 
+        stop(&quot;Second argument must be a valid variable name in R&quot;)
+    if (!(calc_method %in% c(1, 2))) 
+        stop(&quot;calc_method must be either 1 or 2&quot;)
+    if (!(icd10 %in% c(TRUE, FALSE, &quot;cm&quot;, &quot;base&quot;))) 
+        stop(&quot;icd10 must be TRUE, FALSE, &#39;cm&#39;, or &#39;base&#39;&quot;)
+    if (icd10 == FALSE) 
+        i10_iss_method &lt;- &quot;&quot;
+    if (i10_iss_method == &quot;roc_max&quot;) 
+        stop(&quot;The roc_max option has been depricated. Please use roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, or roc_max_TQIP_only instead.&quot;)
+    if ((icd10 != FALSE) &amp;&amp; !(i10_iss_method %in% c(&quot;roc_max_NIS&quot;, 
+        &quot;roc_max_TQIP&quot;, &quot;roc_max_NIS_only&quot;, &quot;roc_max_TQIP_only&quot;, 
+        &quot;gem_max&quot;, &quot;gem_min&quot;))) 
+        stop(&quot;i10_iss_menthod must be roc_max_NIS, roc_max_TQIP, roc_max_NIS_only, roc_max_TQIP_only, gem_max, or gem_min.&quot;)
+    regex_dx &lt;- paste0(&quot;^&quot;, dx_pre, &quot;([0-9]+)$&quot;)
+    dx_colnames &lt;- grep(regex_dx, names(df), value = TRUE)
+    dx_nums &lt;- as.numeric(sub(regex_dx, &quot;\\1&quot;, dx_colnames))
+    num_dx &lt;- length(dx_nums)
+    if (num_dx == 0) 
+        stop(&quot;No variables with prefix found in data&quot;)
+    df &lt;- data.frame(df)
+    if (isTRUE(icd10)) 
+        icd10 &lt;- &quot;cm&quot;
+    if (icd10 %in% c(&quot;base&quot;, &quot;cm&quot;)) {
+        etab &lt;- rbind(etab_s1, i10_ecode)
+        ntab &lt;- switch(i10_iss_method, roc_max_NIS = rbind(ntab_s1, 
+            .select_i10_data(&quot;NIS&quot;, icd10)), roc_max_TQIP = rbind(ntab_s1, 
+            .select_i10_data(&quot;TQIP&quot;, icd10)), roc_max_NIS_only = rbind(ntab_s1, 
+            .select_i10_data(&quot;NIS_only&quot;, icd10)), roc_max_TQIP_only = rbind(ntab_s1, 
+            .select_i10_data(&quot;TQIP_only&quot;, icd10)), gem_max = rbind(ntab_s1, 
+            i10_map_max), gem_min = rbind(ntab_s1, i10_map_min))
+    }
+    else {
+        ntab &lt;- ntab_s1
+        etab &lt;- etab_s1
+    }
+    for (i in dx_nums) {
+        dx_name &lt;- paste0(dx_pre, i)
+        df_ss &lt;- df[, dx_name, drop = FALSE]
+        df_ss$n &lt;- 1:NROW(df_ss)
+        df_ss[, dx_name] &lt;- sub(&quot;\\.&quot;, &quot;&quot;, df_ss[, dx_name])
+        if (icd10 == TRUE &amp; i10_iss_method == &quot;roc_max&quot;) {
+            i9_valid &lt;- c(&quot;8&quot;, &quot;9&quot;, &quot;E&quot;)
+            i10_valid &lt;- c(&quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;)
+            df_ss[, dx_name] &lt;- ifelse(substr(df_ss[, dx_name], 
+                1, 1) %in% c(i9_valid, i10_valid), df_ss[, dx_name], 
+                NA)
+            process_i10 &lt;- function(s) {
+                stopifnot(is.character(s) | is.na(s))
+                ret_val &lt;- NA
+                s &lt;- sub(&quot;\\.&quot;, &quot;&quot;, s)
+                if (!substr(s, 1, 1) %in% c(&quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, 
+                  &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;)) {
+                  ret_val &lt;- s
+                }
+                else if (nchar(s) &lt; 7 &amp; !grepl(&quot;X&quot;, substr(s, 
+                  2, nchar(s)))) {
+                  ret_val &lt;- s
+                }
+                else if (nchar(s) != 7) {
+                  ret_val &lt;- &quot;&quot;
+                }
+                else if (substr(s, 7, 7) != &quot;A&quot;) {
+                  ret_val &lt;- &quot;&quot;
+                }
+                else if (substr(s, 5, 5) == &quot;X&quot;) {
+                  ret_val &lt;- substr(s, 1, 4)
+                }
+                else if (substr(s, 6, 6) == &quot;X&quot;) {
+                  ret_val &lt;- substr(s, 1, 5)
+                }
+                else {
+                  ret_val &lt;- substr(s, 1, 6)
+                }
+                return(ret_val)
+            }
+            df_ss[, dx_name] &lt;- sapply(df_ss[, dx_name], process_i10)
+        }
+        temp &lt;- merge(df_ss, ntab, by.x = dx_name, by.y = &quot;dx&quot;, 
+            all.x = TRUE, all.y = FALSE, sort = FALSE)
+        temp &lt;- temp[order(temp$n), ]
+        temp &lt;- temp[, c(&quot;severity&quot;, &quot;issbr&quot;)]
+        if (calc_method == 2) {
+            temp[which(temp$severity == 6), &quot;severity&quot;] &lt;- 5
+        }
+        names(temp) &lt;- paste0(c(&quot;sev_&quot;, &quot;issbr_&quot;), i)
+        df &lt;- .insert_columns(df, dx_name, temp)
+    }
+    body_regions &lt;- unique(i10_map_max$issbr)
+    issbr_names &lt;- gsub(&quot;/&quot;, &quot;_&quot;, body_regions)
+    for (i in body_regions) {
+        temp &lt;- df[, grepl(&quot;sev_&quot;, names(df)), drop = FALSE] * 
+            (1 * (df[, grepl(&quot;issbr_&quot;, names(df))] == i))
+        df[, paste0(&quot;mxaisbr_&quot;, gsub(&quot;/&quot;, &quot;&quot;, i))] &lt;- apply(temp, 
+            1, function(row) {
+                row &lt;- ifelse(row == 0, NA, row)
+                if (all(is.na(row))) {
+                  maxaisbr &lt;- 0
+                }
+                else if (all(row == 9, na.rm = TRUE)) {
+                  maxaisbr &lt;- 9
+                }
+                else {
+                  maxaisbr &lt;- max(c(0, row[row != 9]), na.rm = TRUE)
+                }
+                return(maxaisbr)
+            })
+    }
+    c9to0 &lt;- function(x) ifelse(x == 9, 0, x)
+    df$maxais &lt;- apply(df, 1, function(row) {
+        row &lt;- row[grepl(&quot;mxaisbr&quot;, names(row))]
+        if (all(is.na(row))) {
+            maxais &lt;- as.numeric(NA)
+        }
+        else if (max(c9to0(row), na.rm = TRUE) == 0) {
+            maxais &lt;- max(row, na.rm = TRUE)
+        }
+        else {
+            maxais &lt;- max(c9to0(row), na.rm = TRUE)
+        }
+        return(maxais)
+    })
+    df$maxais &lt;- as.numeric(df$maxais)
+    df$riss &lt;- apply(df, 1, function(row) {
+        temp &lt;- row[grepl(&quot;^mxaisbr&quot;, names(row))]
+        temp &lt;- as.numeric(c9to0(temp))
+        sum(temp[order(-temp)[1:3]]^2)
+    })
+    df[df$maxais == 6, &quot;riss&quot;] &lt;- 75
+    df[df$maxais == 9, &quot;riss&quot;] &lt;- NA
+    df$niss &lt;- apply(df, 1, function(row) {
+        temp &lt;- row[grepl(&quot;^sev_&quot;, names(row))]
+        temp &lt;- as.numeric(temp)
+        temp &lt;- ifelse(is.na(temp) | temp == 9, 0, temp)
+        sum(temp[order(-temp)[1:3]]^2)
+    })
+    df[df$maxais == 6, &quot;niss&quot;] &lt;- 75
+    df[df$maxais == 9, &quot;niss&quot;] &lt;- NA
+    ecode_colnames &lt;- paste0(&quot;ecode_&quot;, 1:4)
+    df[, ecode_colnames] &lt;- NA
+    ecode_regex &lt;- paste0(&quot;^&quot;, etab$dx, collapse = &quot;|&quot;)
+    df[, ecode_colnames] &lt;- t(apply(df, 1, function(row) {
+        row &lt;- sub(&quot;\\.&quot;, &quot;&quot;, row)
+        row_ecodes &lt;- stringr::str_extract(as.character(unlist(row)), 
+            ecode_regex)
+        row_ecodes &lt;- na.omit(row_ecodes)
+        row_ecodes[1:4]
+    }))
+    for (i in 1:4) {
+        col_name &lt;- paste(&quot;ecode_&quot;, i, sep = &quot;&quot;)
+        df_ss &lt;- df[, col_name, drop = FALSE]
+        df_ss$n &lt;- 1:NROW(df_ss)
+        df_ss[, col_name] &lt;- sub(&quot;\\.&quot;, &quot;&quot;, df_ss[, col_name])
+        temp &lt;- merge(df_ss, etab, by.x = col_name, by.y = &quot;dx&quot;, 
+            all.x = TRUE, all.y = FALSE, sort = FALSE)
+        temp &lt;- temp[order(temp$n), ]
+        temp &lt;- temp[, c(&quot;mechmaj&quot;, &quot;mechmin&quot;, &quot;intent&quot;)]
+        names(temp) &lt;- paste(c(&quot;mechmaj&quot;, &quot;mechmin&quot;, &quot;intent&quot;), 
+            i, sep = &quot;&quot;)
+        df &lt;- .insert_columns(df, col_name, temp)
+    }
+    if (stringr::str_detect(i10_iss_method, &quot;NIS|TQIP&quot;) &amp;&amp; icd10 %in% 
+        c(&quot;cm&quot;, &quot;base&quot;)) {
+        if (verbose) 
+            print(&quot;Calculating mortality prediction&quot;)
+        coef_df &lt;- .select_i10_coef(prefix = stringr::str_extract(i10_iss_method, 
+            &quot;NIS|TQIP&quot;), icd10)
+        stopifnot(max(coef_df$intercept, na.rm = TRUE) == min(coef_df$intercept, 
+            na.rm = TRUE))
+        intercept &lt;- max(coef_df$intercept, na.rm = TRUE)
+        coef_df &lt;- coef_df[!is.na(coef_df$effect), ]
+        effect_hash &lt;- coef_df$effect
+        names(effect_hash) &lt;- coef_df$dx
+        calc_mortality_prediction &lt;- function(dx) {
+            x &lt;- sum(effect_hash[sub(&quot;\\.&quot;, &quot;&quot;, dx)], na.rm = TRUE) + 
+                intercept
+            1/(1 + exp(-x))
+        }
+        mat &lt;- as.matrix(df[, grepl(paste0(&quot;^&quot;, dx_pre), names(df))])
+        df$Pmort &lt;- apply(mat, 1, calc_mortality_prediction)
+    }
+    rownames(df) &lt;- 1:nrow(df)
+    df
+}
+&lt;bytecode: 0x7f780cd786a0&gt;
+&lt;environment: namespace:icdpicr&gt;
 </pre></div>
 </div>
-<p>1.5 As such, the syntax is:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># use subset of injury given its size</span>
-<span class="n">inj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injury</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
-<span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">inj</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>What is the value of dx_pre?</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">injury</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 100,477 × 11
+   dx1      dx2      dx3      dx4      dx5   dx6   dx7   dx8   dx9   dx10   died
+   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+ 1 S72.342A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 2 S05.22XA <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 3 S00.01XA S00.03XA S00.11XA S00.12XA S00.… S00.… S00.… S01.… S02.… S80.…     0
+ 4 S21.119A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 5 S82.191A <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 6 S22.42XA <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>       <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 7 S92.052A S92.065A S92.325A S92.335A S92.… S93.… <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+ 8 S02.112A S06.5X0A S12.090A S12.100A S12.… S20.… S20.… S22.… S22.… S22.…     0
+ 9 S00.03XA S22.058A S22.068A S22.078A S22.… S30.… S42.… S62.… S81.… S82.…     0
+10 S61.411A S62.624B S62.626B S66.300A S66.… S66.… S66.… <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>    <span class=" -Color -Color-Red">NA</span>        0
+# ℹ 100,467 more rows
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>As such, the script should first use a sample:</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1"># use subset of injury given its size</span>
+<span class="w">   </span><span class="n">inj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injury</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="w">   </span><span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">inj</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c1"># visualize the output</span>
+<span class="w">   </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 9</caption>
+<thead>
+	<tr><th></th><th scope=col>dx1</th><th scope=col>sev_1</th><th scope=col>issbr_1</th><th scope=col>dx2</th><th scope=col>sev_2</th><th scope=col>issbr_2</th><th scope=col>dx3</th><th scope=col>sev_3</th><th scope=col>issbr_3</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>S72.342A</td><td>1</td><td>Extremities</td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>2</th><td>S05.22XA</td><td>1</td><td>Face       </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>3</th><td>S00.01XA</td><td>1</td><td>Head/Neck  </td><td>S00.03XA</td><td> 2</td><td>Head/Neck  </td><td>S00.11XA</td><td> 2</td><td>Face       </td></tr>
+	<tr><th scope=row>4</th><td>S21.119A</td><td>3</td><td>Chest      </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>5</th><td>S82.191A</td><td>3</td><td>Extremities</td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>6</th><td>S22.42XA</td><td>3</td><td>Chest      </td><td>NA      </td><td>NA</td><td>NA         </td><td>NA      </td><td>NA</td><td>NA         </td></tr>
+	<tr><th scope=row>7</th><td>S92.052A</td><td>1</td><td>Extremities</td><td>S92.065A</td><td> 1</td><td>Extremities</td><td>S92.325A</td><td> 1</td><td>Extremities</td></tr>
+	<tr><th scope=row>8</th><td>S02.112A</td><td>1</td><td>Face       </td><td>S06.5X0A</td><td> 4</td><td>Head/Neck  </td><td>S12.090A</td><td> 4</td><td>Head/Neck  </td></tr>
+	<tr><th scope=row>9</th><td>S00.03XA</td><td>2</td><td>Head/Neck  </td><td>S22.058A</td><td> 1</td><td>Chest      </td><td>S22.068A</td><td> 3</td><td>Chest      </td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>mxaisbr_General</th><th scope=col>mxaisbr_HeadNeck</th><th scope=col>mxaisbr_Face</th><th scope=col>mxaisbr_Extremities</th><th scope=col>mxaisbr_Chest</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>2</td><td>2</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td></tr>
+	<tr><th scope=row>7</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><th scope=row>8</th><td>0</td><td>4</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>9</th><td>0</td><td>2</td><td>0</td><td>0</td><td>3</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>mxaisbr_Abdomen</th><th scope=col>maxais</th><th scope=col>riss</th><th scope=col>niss</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>1</td><td> 1</td><td> 1</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>1</td><td> 1</td><td> 1</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>2</td><td> 8</td><td> 9</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>3</td><td> 9</td><td> 9</td></tr>
+	<tr><th scope=row>7</th><td>0</td><td>1</td><td> 1</td><td> 3</td></tr>
+	<tr><th scope=row>8</th><td>0</td><td>4</td><td>17</td><td>33</td></tr>
+	<tr><th scope=row>9</th><td>0</td><td>3</td><td>13</td><td>14</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>intent4</th><th scope=col>Pmort</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>NA</td><td>0.013857916</td></tr>
+	<tr><th scope=row>2</th><td>NA</td><td>0.014412795</td></tr>
+	<tr><th scope=row>3</th><td>NA</td><td>0.017673701</td></tr>
+	<tr><th scope=row>4</th><td>NA</td><td>0.026078454</td></tr>
+	<tr><th scope=row>5</th><td>NA</td><td>0.027839150</td></tr>
+	<tr><th scope=row>6</th><td>NA</td><td>0.024364215</td></tr>
+	<tr><th scope=row>7</th><td>NA</td><td>0.005516156</td></tr>
+	<tr><th scope=row>8</th><td>NA</td><td>0.037222518</td></tr>
+	<tr><th scope=row>9</th><td>NA</td><td>0.021037152</td></tr>
+</tbody>
+</table>
+</div></div>
+</details>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>What is the value of the ISS?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">iss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NULL
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>What is the value of the NISS?</p></li>
+</ol>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">niss</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  [1]  1  1  9  9  9  9  3 33 14  6 22  1  1  2  1  4  1  6  1  6  1  9  1  3 22
+ [26]  6 10  6  1 30  4  9 11 33 17  1 17  1 17  3  2  6  8  9  5  4  1 21  1 11
+ [51] 20 11  6  1 26  9  3  2 27 11  6 19  1 11  6  3  3 41  2 10  9 11  1  1  1
+ [76]  1 18 22 10  3 19  6  1  9  9 14  9  5  4 33 21 22  1  4  2  1 13  1  9 35
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>What is the value of the RTS?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="nf">print</span><span class="p">(</span><span class="n">df_score</span><span class="o">$</span><span class="n">rts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NULL
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\vdots\)</span></p>
+<ol class="arabic" start="9">
+<li><p>Edit code to run on the full dataset</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># use subset of injury given its size (replace &quot;injury&quot; with your datafile of interest)</span>
+<span class="n">df_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cat_trauma</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">injury</span><span class="p">,</span><span class="w"> </span><span class="n">dx_pre</span><span class="o">=</span><span class="s">&quot;dx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">icd10</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">i10_iss_method</span><span class="o">=</span><span class="s">&quot;roc_max_NIS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">calc_method</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+
 <span class="c1"># visualize the output</span>
 <span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="o">:</span><span class="m">14</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">15</span><span class="o">:</span><span class="m">18</span><span class="p">];</span><span class="w"> </span><span class="n">df_score</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="m">34</span><span class="o">:</span><span class="m">35</span><span class="p">]</span>
 </pre></div>
 </div>
-<hr class="docutils" />
+</li>
+</ol>
 
     <script type="text/x-thebe-config">
     {
@@ -400,16 +821,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "r"
         },
         kernelOptions: {
-            name: "python3",
+            name: "ir",
             path: "./act0/act_0_4"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ir'</script>
 
                 </article>
               
