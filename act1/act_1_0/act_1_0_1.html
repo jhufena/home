@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>1. Rigor &#8212; Challenges, Skills, and Tools</title>
   
@@ -389,69 +389,37 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id4">
 <h1><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
 <p><strong>The Unsung Hero of Medical Breakthroughs</strong></p>
-<p><strong>Introduction</strong></p>
-<p>Imagine you’re about to board an airplane. You see the pilot meticulously checking the aircraft, adhering to a pre-flight checklist, ensuring every dial is accurate, every bolt is tight, and every engine is roaring at its best. That, in essence, is what rigor is in medical research—a set of checks and balances that makes sure the science we trust is as dependable as the planes we fly. Let’s buckle up and explore why rigor is the unsung hero that underpins every medical breakthrough.</p>
+<p>Imagine stepping into the world’s most advanced forensics lab. <a class="reference external" href="https://en.wikipedia.org/wiki/Dr._Watson">A detective</a>—meticulously examining evidence, cross-referencing data, and following each clue—is what rigor is to medical research. It’s this rigor that turns hypotheses into life-saving solutions. Buckle up, detective; we have a case to crack.</p>
 <p><strong>Informed Decisions</strong></p>
-<p>The Image Explained: Imagine a group of patients with bladder cancer, each at a crossroads. The choice is whether they are suitable for a specific treatment called cisplatin. While you might think of these decisions as straightforward, in reality, they’re anything but.</p>
-<p>Let’s simplify this complexity with a visual representation. Refer to Figure 1 below, which encapsulates the odds of eligibility for cisplatin treatment for black patients with bladder cancer, depending on the method used to calculate their eGFR (glomerular filtration rate).</p>
+<p><strong>The Caseboard: Making a Decision</strong></p>
+<p>We have a wall covered in photos, timelines, and red strings, much like a <a class="reference external" href="https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL21hZmlhLXVwZGF0ZS0xMi5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjgyOH19fQ==">detective’s caseboard</a>. That’s Figure 1 below, illustrating the complicated decision-making process in determining eligibility for cisplatin treatment in bladder cancer patients.</p>
 <p><img alt="Decision Making in Medicine" src="https://github.com/jhutrc/beta/blob/main/act_0/act_0_2/act_0_2_1/fig1_cisplatin.png?raw=true" /></p>
-<p>You’ll see two distinct paths stemming from an initial condition: eGFR greater than 60 ml/min. On one path, we’re using the CKD-EPI 2021 equation; on the other, CKD-EPI 2009. Each leads to one of two outcomes—eligibility for Cisplatin treatment (Cisplatin+) or ineligibility (Cisplatin-).</p>
 <p><strong>The Forensics of the Clinical Problem</strong></p>
-<p>Medical researchers are akin to <a class="reference external" href="https://en.wikipedia.org/wiki/Dr._Watson">detectives</a> arriving at a crime scene. To solve the case—or in our context, to answer the research question—they need a forensic-level understanding of the clinical problem. This goes beyond just what or who; it delves into how, why, and what if.</p>
-<p><strong>The Architect and the Blueprint</strong></p>
-<p>Creating the research design is like constructing a skyscraper. It starts with a blueprint that lays out what the study aims to achieve and how it plans to get there, a carefully orchestrated composition of methods, participants, and metrics.</p>
-<p><strong>The Compass and the Navigator</strong></p>
-<p>Data analysis in medical research is like navigating through a dense jungle; a good compass is essential for survival. Here, the compass is our statistical methodology, helping us sift through a thicket of numbers to find our way to clear, actionable insights.</p>
+<p>Just like solving a crime requires a thorough understanding of the crime scene, medical research demands a forensic-level grasp of the clinical problem.</p>
+<p><strong>The Blueprint of the Investigation</strong></p>
+<p>The research design is the detective’s plan or blueprint, meticulously detailing how clues will be found, suspects interviewed, and evidence analyzed.</p>
+<p><strong>Data Analysis: The Lab Work</strong></p>
+<p>When it comes to solving a case, forensics labs play a pivotal role. Here, statistical methodology is our lab, a place to dissect the raw data into meaningful insights.</p>
 <Details>
-  <Summary>The Nitty-Gritty: Analytic Design</Summary>
+  <Summary>The Tools of the Detective: Analytic Design</Summary>
 <ol class="arabic simple">
-<li><p>Eligibility and the Art of Selection</p></li>
+<li><p><strong>Suspect Lineup</strong>: Just like how not every person is a suspect, not every patient is fit for every study. The choices made here dictate the evidence we collect.</p></li>
+<li><p><strong>Balancing the Scales</strong>: Just as a detective wouldn’t focus solely on one suspect, clinical studies require a balanced examination of both study and control groups.</p></li>
+<li><p><strong>Tracing the Footsteps</strong>: Serial measurements are the detective’s chronological notes, useful but requiring specialized tools like mixed-effects models for true insight.</p></li>
 </ol>
-<p>Imagine casting for a film. Not just any actor fits every role; likewise, not just any patient fits every study. The casting decisions you make are critical to the story you’ll ultimately tell.</p>
-<ol class="arabic simple" start="2">
-<li><p>Propensity for Outcomes: Leveling the Playing Field</p></li>
-</ol>
-<p>If you’ve ever balanced a seesaw, you know it’s all about equal weight on both sides. In clinical studies, this balance is known as propensity for outcomes between study and control groups.</p>
-<ol class="arabic simple" start="3">
-<li><p>Surrogate Markers of Outcomes: Continuous Measures</p></li>
-</ol>
-<p>Changes in a surrogate marker over time may be a good indicator of the ultimate outcome of interest. But there are a few things to keep in mind when using continuous measures.</p>
+</Details>
 <Details>
-  <Summary>Variance in measures as explanation, not as bias</Summary>
-<ul class="simple">
-<li><p><strong>Calibration</strong>: Ensuring the continuous measure serves as a valid surrogate for the ultimate outcome is not a one-off process. New technologies will keep emerging and require recalibration of the measure to ensure it remains a valid surrogate.</p></li>
-<li><p><strong>Longitudinal</strong>: Repeated measures of the same individuals over time can be powerful but require specialized statistical models like mixed-effects models or generalized estimating equations to account for within-subject correlation.</p></li>
-<li><p><strong>Hierarchical</strong>: If data are clustered by some phenotype or other categorization (like hospital or geographic location), you’ll need to use hierarchical or multilevel models to account for this clustering. This is particularly important for avoiding Type I errors (false positives).</p></li>
-</ul>
+  <Summary>Evidence Variance: Invaluable Clues, not Confounding Variables</Summary>
+<ol class="arabic simple">
+<li><p><strong>Calibration</strong>: Evidence needs to be calibrated for the case at hand, and so do our surrogate markers.</p></li>
+<li><p><strong>Longitudinal Tracing</strong>: Just like crime patterns emerge over time, repeated measures of the same individuals give longitudinal depth to our investigation.</p></li>
+<li><p><strong>Jurisdictional Challenges</strong>: Just like crimes can cross jurisdictions requiring collaboration between different departments, data are often clustered, requiring hierarchical models for accurate interpretation.</p></li>
+</ol>
 </Details>
-<ol class="arabic simple" start="4">
-<li><p>Time-to-event data: Survival Analysis</p></li>
-</ol>
-<p>The evolution of a disease might be like a sprint, a marathon, or something in-between. Everyone who reaches the finish line has an outcome. This is known as an event (often an ICD code or death).</p>
-<ol class="arabic simple" start="5">
-<li><p>Data Interaction: The Plot Twists of Medical Research</p></li>
-</ol>
-<p>In a novel, plot twists keep us hooked. Similarly, interaction effects in a study can reveal unexpected but critical information that keeps researchers on their toes.</p>
-<ol class="arabic simple" start="6">
-<li><p>Multiple Comparisons: Juggling with Data</p></li>
-</ol>
-<p>Imagine juggling. The more balls in the air, the higher the chance of a mistake. Likewise, conducting multiple comparisons in a study requires a higher level of skill to prevent errors.</p>
-<ol class="arabic simple" start="7">
-<li><p>Missing Data: The Ghosts in Our Machine</p></li>
-</ol>
-<p>Think of data as the cast of a play. If key characters go missing, the story falls apart. The same goes for our research.</p>
-<ol class="arabic simple" start="8">
-<li><p>Visualization: A Snapshot Worth a Thousand Data Points</p></li>
-</ol>
-<p>A compelling visual can go viral in today’s digital age. Similarly, a well-crafted visualization in a study can rapidly communicate complex data to a wide audience.</p>
-<ol class="arabic simple" start="9">
-<li><p>Generalizability: From Local Stage to Global Impact</p></li>
-</ol>
-<p>Ever watched a local artist become a global superstar? That’s what generalizability is all about in research—making sure your findings are ready for the big league.</p>
-</Details>
-<p>Conclusion</p>
-<p>So there you have it—rigor may be the unsung hero of medical research, but it’s what turns average science into life-saving breakthroughs. The same way a pilot relies on precise instrumentation to steer a flight safely, our research relies on methodical planning and execution, as illustrated by our decision-making flowchart (Figure 1). This ensures that medical research is dependable, ethical, and impactful. So, the next time you hear about a new revolutionary treatment or vaccine, remember that rigor was its co-pilot, steering it safely from question to answer, from the lab bench to your medicine cabinet.</p>
+<p><strong>Conclusion</strong></p>
+<p>Rigor may be the unsung hero of medical research, but it’s indispensable in guiding us from question to answer, like a detective’s relentless pursuit from clue to conclusion. With rigor as our forensic toolkit, we ensure that medical research is dependable, ethical, and ultimately, life-saving.</p>
 </section>
 
     <script type="text/x-thebe-config">
