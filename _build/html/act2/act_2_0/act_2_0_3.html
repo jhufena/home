@@ -163,7 +163,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 <li class="toctree-l1"><a class="reference internal" href="../../act1/act_1_0/act_1_0_2.html">2. Error</a></li>
 
 
@@ -395,11 +394,11 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </pre></div>
 </div>
 <p><strong>Step 2: Push the Changes to Your Fork</strong></p>
-<p>Push these commits to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p>
+<p>Push these commits to your fork (<code class="docutils literal notranslate"><span class="pre">username/repo</span></code>) on GitHub.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-<p><strong>Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code></strong></p>
+<p><strong>Step 3: Delete Old Folders and Files from <code class="docutils literal notranslate"><span class="pre">username/repo</span></code></strong></p>
 <p>If you’ve completely overhauled the backend and renamed directories/files, and you’ve committed these changes, then the old folders and files should already be removed from the repository once you’ve pushed the changes.</p>
 <p>However, if you want to make sure, you can manually delete specific files and directories.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>old_folder/
@@ -407,10 +406,10 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-<p><strong>Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>)</strong></p>
-<p>Before merging changes, it’s a good practice to sync your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) with the original repository (<code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>).</p>
+<p><strong>Step 4: Syncing Your Fork with the Original (<code class="docutils literal notranslate"><span class="pre">username/home</span></code>)</strong></p>
+<p>Before merging changes, it’s a good practice to sync your fork (<code class="docutils literal notranslate"><span class="pre">username/repo</span></code>) with the original repository (<code class="docutils literal notranslate"><span class="pre">username/home</span></code>).</p>
 <p>First, add the original repository as a remote:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/jhufena/home.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/username/home.git
 </pre></div>
 </div>
 <p>Fetch the changes:</p>
@@ -426,15 +425,15 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </pre></div>
 </div>
 <p><strong>Step 5: Creating a Pull Request</strong></p>
-<p>Now that your fork is updated and includes your new structural changes, go to GitHub and create a pull request from <code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code> to <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>.</p>
+<p>Now that your fork is updated and includes your new structural changes, go to GitHub and create a pull request from <code class="docutils literal notranslate"><span class="pre">username/repo</span></code> to <code class="docutils literal notranslate"><span class="pre">username/home</span></code>.</p>
 <ol class="arabic simple">
-<li><p>Navigate to your fork (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>) on GitHub.</p></li>
+<li><p>Navigate to your fork (<code class="docutils literal notranslate"><span class="pre">username/repo</span></code>) on GitHub.</p></li>
 <li><p>Click on “Pull Requests.”</p></li>
 <li><p>Click on “New Pull Request.”</p></li>
-<li><p>In the “base repository,” choose <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code>, and in “compare,” choose your repository (<code class="docutils literal notranslate"><span class="pre">abikesa/fena</span></code>).</p></li>
+<li><p>In the “base repository,” choose <code class="docutils literal notranslate"><span class="pre">username/home</span></code>, and in “compare,” choose your repository (<code class="docutils literal notranslate"><span class="pre">username/repo</span></code>).</p></li>
 </ol>
-<p>Review the changes and submit the pull request. This will notify the maintainers of <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> to review your changes.</p>
-<p>Once approved, the changes can be merged into the <code class="docutils literal notranslate"><span class="pre">jhufena/home</span></code> repository.</p>
+<p>Review the changes and submit the pull request. This will notify the maintainers of <code class="docutils literal notranslate"><span class="pre">username/home</span></code> to review your changes.</p>
+<p>Once approved, the changes can be merged into the <code class="docutils literal notranslate"><span class="pre">username/home</span></code> repository.</p>
 <p><strong>Final Note</strong></p>
 <p>Remember to communicate with the maintainers of the original repository and ensure you have the correct permissions to make these changes. It’s always good to document your changes well to make it easier for maintainers to understand what you’ve done, why you’ve done it, and how it benefits the project.</p>
 </Details>
