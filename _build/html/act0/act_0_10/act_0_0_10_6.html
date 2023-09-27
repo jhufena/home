@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'act0/act_0_10/act_0_0_10_3';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'act0/act_0_10/act_0_0_10_6';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -247,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/act0/act_0_10/act_0_0_10_3.ipynb" target="_blank"
+      <li><a href="../../_sources/act0/act_0_10/act_0_0_10_6.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,13 +351,70 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>Develop webApp for the project</p>
+  <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1"># @see https://git.io/viyyo</span>
+<span class="c1"># template for localhost:4567/* -&gt; gh-pages deployment</span>
+<span class="c1"># gh-pages will host the webApp risk calculator for Fawaz&#39;s paper</span>
+
+<span class="nb">set</span><span class="w"> </span>-eo<span class="w"> </span>pipefail
+
+<span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TRACE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-x
+
+start_viewer_sinatra<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/viewer-sinatra
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span>/tmp/viewer-sinatra
+<span class="w">  </span><span class="c1"># TODO: Make `master` configurable</span>
+<span class="w">  </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://github.com/everypolitician/viewer-sinatra/archive/master.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-z<span class="w"> </span>-x<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span>--strip<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="nb">unset</span><span class="w"> </span>BUNDLE_GEMFILE
+<span class="w">  </span>bundle<span class="w"> </span>install
+<span class="w">  </span>bundle<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ruby<span class="w"> </span>app.rb<span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span>!<span class="w"> </span>nc<span class="w"> </span>-z<span class="w"> </span>localhost<span class="w"> </span><span class="m">4567</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="o">}</span>
+
+build_viewer_static<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span>/tmp
+<span class="w">  </span>wget<span class="w"> </span>-nv<span class="w"> </span>-m<span class="w"> </span>localhost:4567/status/all_countries.html<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;wget exited with non-zero exit code: </span><span class="nv">$?</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="o">)</span>
+<span class="o">}</span>
+
+deploy_viewer_static<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span>/tmp
+<span class="w">  </span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>https://github.com/everypolitician/viewer-static.git
+<span class="w">  </span><span class="nb">cd</span><span class="w"> </span>viewer-static
+<span class="w">  </span>git<span class="w"> </span>checkout<span class="w"> </span>gh-pages
+<span class="w">  </span>cp<span class="w"> </span>-R<span class="w"> </span>/tmp/localhost:4567/*<span class="w"> </span>.
+<span class="w">  </span>git<span class="w"> </span>add<span class="w"> </span>.
+<span class="w">  </span>git<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;user.name=everypoliticianbot&quot;</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;user.email=everypoliticianbot@users.noreply.github.com&quot;</span><span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Automated commit&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>gh-pages
+<span class="o">}</span>
+
+main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TRAVIS_PULL_REQUEST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TRAVIS_BRANCH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>master<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>--name-only<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TRAVIS_COMMIT_RANGE</span><span class="s2">&quot;</span><span class="w"> </span>--<span class="w"> </span>countries.json<span class="k">)</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No changes to countries.json detected, skipping deploy.&quot;</span>
+<span class="w">      </span><span class="nb">exit</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span>start_viewer_sinatra
+<span class="w">    </span>build_viewer_static
+<span class="w">    </span>deploy_viewer_static
+<span class="w">  </span><span class="k">fi</span>
+<span class="o">}</span>
+
+main
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>The <code class="docutils literal notranslate"><span class="pre">deploy_viewer_static()</span></code> function is a shell script that automates the deployment of a static website to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of a GitHub repository. Here’s a breakdown of what each line is doing:</p>
 <ol class="arabic simple">
-<li><p>Regression</p></li>
-<li><p>Coefficient and Var-Covar Matrices</p></li>
-<li><p>Supporting <a class="reference external" href="https://github.com/ds4ph-bme/capstone-project-muzaale">pickle files</a> required by <a class="reference external" href="http://kfalkd.py">kfalkd.py</a></p></li>
-<li><p><a class="reference internal" href="act_0_0_10_4.html"><span class="doc std std-doc">Build</span></a> automated shell script: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-R</span> <span class="pre">/tmp/localhost:4567/*</span> <span class="pre">.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/tmp</span></code>: Changes the current working directory to the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory, which is often used for storing temporary files on Unix-like operating systems.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">--depth=1</span> <span class="pre">https://github.com/everypolitician/viewer-static.git</span></code>: Clones the GitHub repository at <code class="docutils literal notranslate"><span class="pre">https://github.com/everypolitician/viewer-static.git</span></code> into the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. The <code class="docutils literal notranslate"><span class="pre">--depth=1</span></code> flag indicates that only the latest commit is fetched, making the clone operation faster.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">viewer-static</span></code>: Changes the current working directory to the newly cloned <code class="docutils literal notranslate"><span class="pre">viewer-static</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></code>: Switches to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the repository. This branch is often used for hosting static websites on GitHub Pages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-R</span> <span class="pre">/tmp/localhost:4567/*</span> <span class="pre">.</span></code>: Copies all files from the <code class="docutils literal notranslate"><span class="pre">/tmp/localhost:4567/</span></code> directory to the current (<code class="docutils literal notranslate"><span class="pre">viewer-static</span></code>) directory. The <code class="docutils literal notranslate"><span class="pre">-R</span></code> flag indicates that the operation should be recursive, copying all subdirectories and their contents.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code>: Stages all the new and modified files in the current directory for a git commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">-c</span> <span class="pre">&quot;user.name=everypoliticianbot&quot;</span> <span class="pre">-c</span> <span class="pre">&quot;user.email=everypoliticianbot&#64;users.noreply.github.com&quot;</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;Automated</span> <span class="pre">commit&quot;</span> <span class="pre">||</span> <span class="pre">true</span></code>: Commits the staged changes to the repository with the commit message “Automated commit”. The commit is made under the username <code class="docutils literal notranslate"><span class="pre">everypoliticianbot</span></code> and email <code class="docutils literal notranslate"><span class="pre">everypoliticianbot&#64;users.noreply.github.com</span></code>. The <code class="docutils literal notranslate"><span class="pre">||</span> <span class="pre">true</span></code> part ensures that even if the commit fails, the script continues execution without error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">gh-pages</span></code>: Pushes the committed changes to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the remote GitHub repository, thereby updating the GitHub Pages website.</p></li>
 </ol>
+<p>Overall, the script automates the process of updating a static website hosted on GitHub Pages by pulling the latest version of the website from a repository, copying new files into it, and then pushing the changes back to the repository. This is a common pattern for automating the deployment of static websites and should be adopted for this project.</p>
 
     <script type="text/x-thebe-config">
     {
