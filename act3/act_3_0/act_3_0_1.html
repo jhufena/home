@@ -438,6 +438,134 @@ document.write(`
 </pre></div>
 </div>
 </Details>
+<Details>
+   <Summarize>Hands-on experience</Summarize>
+<p>How to install pandas on your computer in a unix environment (Mac or Linux):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+</pre></div>
+</div>
+<p>The syntax is the same for all packages that you want to install. Just replace <code class="docutils literal notranslate"><span class="pre">pandas</span></code> with the name of the package you want to install.</p>
+<p>In Windows, you can install packages by opening the Anaconda Prompt and typing the same command as above.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import<span class="w"> </span>numpy<span class="w"> </span>as<span class="w"> </span>np
+import<span class="w"> </span>matplotlib.pyplot<span class="w"> </span>as<span class="w"> </span>plt
+from<span class="w"> </span>scipy<span class="w"> </span>import<span class="w"> </span>stats
+import<span class="w"> </span>pandas<span class="w"> </span>as<span class="w"> </span>pd
+</pre></div>
+</div>
+<p>Import the CSV file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the CSV file into a DataFrame</span>
+<span class="nv">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pd.read_csv<span class="o">(</span><span class="s1">&#39;~/dropbox/1f.ἡἔρις,κ/1.ontology/donor_live_keep.csv&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>You can find the dimensions of a DataFrame using the <code class="docutils literal notranslate"><span class="pre">.shape</span></code> attribute. This attribute returns a tuple representing the dimensions of the DataFrame, where the first element is the number of rows and the second is the number of columns.</p>
+<p>Here’s how to find the dimensions of your DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the dimensions of the DataFrame</span>
+rows,<span class="w"> </span><span class="nv">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.shape
+
+<span class="c1"># Print the dimensions</span>
+print<span class="o">(</span>f<span class="s2">&quot;The DataFrame has {rows} rows and {cols} columns.&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>This will give you a quick idea of how large your dataset is.</p>
+<hr class="docutils" />
+<p>Next, you can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to print the first 5 rows of your DataFrame. This is a good way to get a feel for what information is in your dataset. You can pass a number into the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to print a different number of rows. For example, <code class="docutils literal notranslate"><span class="pre">df.head(10)</span></code> will print the first 10 rows of your DataFrame.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>df.head<span class="o">()</span>
+</pre></div>
+</div>
+<p>You can restrict the DataFrame to a subset of rows and columns using slicing. Here’s how to keep only the first 1000 rows and the first 9 columns:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subset the DataFrame</span>
+<span class="nv">subset_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.iloc<span class="o">[</span>:1000,<span class="w"> </span>:9<span class="o">]</span>
+
+<span class="c1"># Show the shape of the new DataFrame to confirm</span>
+print<span class="o">(</span>f<span class="s2">&quot;The shape of the subset DataFrame is {subset_df.shape}&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p><b>Explanation</b>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.iloc[:1000,</span> <span class="pre">:9]</span></code> uses the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> indexer for Pandas DataFrames. The <code class="docutils literal notranslate"><span class="pre">:1000</span></code> selects the first 1000 rows and the <code class="docutils literal notranslate"><span class="pre">:9</span></code> selects the first 9 columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subset_df.shape</span></code> will display the shape of the new DataFrame, which should be (1000, 9) to confirm that you’ve correctly subsetted it.</p></li>
+</ul>
+<p>Now <code class="docutils literal notranslate"><span class="pre">subset_df</span></code> contains only the first 1000 rows and the first 9 columns of the original <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>subset_df.head<span class="o">()</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the first 100 rows and cherry-pick columns by index (e.g., columns at index 0, 2, 4, and 6)</span>
+<span class="nv">subset_csv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>df.iloc<span class="o">[</span>:100,<span class="w"> </span><span class="o">[</span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">6</span><span class="o">]]</span>
+subset_csv.to_csv<span class="o">(</span><span class="s1">&#39;~/dropbox/1f.ἡἔρις,κ/1.ontology/subset.csv&#39;</span>,<span class="w"> </span><span class="nv">index</span><span class="o">=</span>False<span class="o">)</span>
+</pre></div>
+</div>
+<p>I copied and pasted a tiny subset of the data into a new file called <code class="docutils literal notranslate"><span class="pre">subset.csv</span></code>. This file contains only the first 100 rows and cherry-picked columns from the original dataset. You can download it <a class="reference external" href="https://raw.githubusercontent.com/jhufena/jhufena.github.io/main/data/subset.csv">here</a>.</p>
+<p>You can copy and paste the .csv file into ChatGPT and ask it to perform some task in Python. For example:</p>
+<hr class="docutils" />
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary statistics to identify continuous variables</span>
+<span class="nv">cont_summary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>subset_df.describe<span class="o">()</span>
+print<span class="o">(</span><span class="s2">&quot;Continuous Variables:&quot;</span><span class="o">)</span>
+print<span class="o">(</span>cont_summary.columns.tolist<span class="o">())</span><span class="w">  </span><span class="c1"># These are likely to be continuous variables</span>
+
+<span class="c1"># Identify binary variables</span>
+<span class="nv">binary_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>col<span class="w"> </span><span class="k">for</span><span class="w"> </span>col<span class="w"> </span><span class="k">in</span><span class="w"> </span>subset_df.columns<span class="w"> </span><span class="k">if</span><span class="w"> </span>subset_df<span class="o">[</span>col<span class="o">]</span>.nunique<span class="o">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="o">]</span>
+print<span class="o">(</span><span class="s2">&quot;\nBinary Variables:&quot;</span><span class="o">)</span>
+print<span class="o">(</span>binary_vars<span class="o">)</span>
+
+<span class="c1"># Identify categorical variables</span>
+<span class="nv">cat_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>col<span class="w"> </span><span class="k">for</span><span class="w"> </span>col<span class="w"> </span><span class="k">in</span><span class="w"> </span>subset_df.select_dtypes<span class="o">(</span><span class="nv">include</span><span class="o">=[</span><span class="s1">&#39;object&#39;</span><span class="o">])</span>.columns<span class="w"> </span><span class="k">if</span><span class="w"> </span>col<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>binary_vars<span class="o">]</span>
+print<span class="o">(</span><span class="s2">&quot;\nCategorical Variables:&quot;</span><span class="o">)</span>
+print<span class="o">(</span>cat_vars<span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Continuous Variables:
+[&#39;pers_id&#39;, &#39;don_age_in_months&#39;, &#39;don_age&#39;, &#39;don_race&#39;]
+
+Binary Variables:
+[&#39;don_gender&#39;, &#39;don_ethnicity_srtr&#39;]
+
+Categorical Variables:
+[&#39;don_ty&#39;, &#39;don_home_state&#39;, &#39;don_race_srtr&#39;]
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import<span class="w"> </span>numpy<span class="w"> </span>as<span class="w"> </span>np
+import<span class="w"> </span>matplotlib.pyplot<span class="w"> </span>as<span class="w"> </span>plt
+from<span class="w"> </span>scipy<span class="w"> </span>import<span class="w"> </span>stats
+
+<span class="c1"># Sample data (replace with your own)</span>
+<span class="nv">ages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>subset_df<span class="o">[</span><span class="s1">&#39;don_age&#39;</span><span class="o">]</span>.dropna<span class="o">()</span><span class="w">  </span><span class="c1"># Remove NaN values if any</span>
+
+<span class="c1"># Add jitter to x-values for visualization</span>
+np.random.seed<span class="o">(</span><span class="m">42</span><span class="o">)</span>
+<span class="nv">jitter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.random.normal<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">0</span>.1,<span class="w"> </span>len<span class="o">(</span>ages<span class="o">))</span>
+
+<span class="c1"># Scatter plot</span>
+plt.scatter<span class="o">(</span>jitter,<span class="w"> </span>ages,<span class="w"> </span><span class="nv">color</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span>,<span class="w"> </span><span class="nv">alpha</span><span class="o">=</span><span class="m">0</span>.5,<span class="w"> </span><span class="nv">label</span><span class="o">=</span><span class="s1">&#39;Data Points&#39;</span><span class="o">)</span>
+
+<span class="c1"># Calculate mean and 95% CI for ages</span>
+<span class="nv">mean_age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.mean<span class="o">(</span>ages<span class="o">)</span>
+<span class="nv">confidence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.95
+<span class="nv">std_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.std<span class="o">(</span>ages<span class="o">)</span>
+<span class="nv">ci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>std_dev<span class="w"> </span>*<span class="w"> </span>stats.t.ppf<span class="o">((</span><span class="m">1</span><span class="w"> </span>+<span class="w"> </span>confidence<span class="o">)</span><span class="w"> </span>/<span class="w"> </span><span class="m">2</span>,<span class="w"> </span>len<span class="o">(</span>ages<span class="o">)</span><span class="w"> </span>-<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+
+<span class="c1"># Overlay mean as a horizontal line (in gray)</span>
+plt.axhline<span class="o">(</span><span class="nv">y</span><span class="o">=</span>mean_age,<span class="w"> </span><span class="nv">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span>,<span class="w"> </span><span class="nv">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span>,<span class="w"> </span><span class="nv">label</span><span class="o">=</span>f<span class="s1">&#39;Mean Age: {mean_age:.2f}&#39;</span><span class="o">)</span>
+
+<span class="c1"># Overlay mean as a blue dot</span>
+plt.scatter<span class="o">(</span><span class="m">0</span>,<span class="w"> </span>mean_age,<span class="w"> </span><span class="nv">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span>,<span class="w"> </span><span class="nv">zorder</span><span class="o">=</span><span class="m">5</span>,<span class="w"> </span><span class="nv">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="o">)</span>
+
+<span class="c1"># Overlay 95% CI as a vertical error bar (in orange)</span>
+plt.errorbar<span class="o">(</span><span class="m">0</span>,<span class="w"> </span>mean_age,<span class="w"> </span><span class="nv">yerr</span><span class="o">=</span>ci,<span class="w"> </span><span class="nv">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span>,<span class="w"> </span><span class="nv">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span>,<span class="w"> </span><span class="nv">capsize</span><span class="o">=</span><span class="m">5</span>,<span class="w"> </span><span class="nv">label</span><span class="o">=</span>f<span class="s1">&#39;95% CI: {mean_age - ci:.2f} - {mean_age + ci:.2f}&#39;</span><span class="o">)</span>
+
+<span class="c1"># Remove x-axis ticks, labels, and title</span>
+plt.xticks<span class="o">([])</span>
+plt.xlabel<span class="o">(</span><span class="s1">&#39;&#39;</span><span class="o">)</span>
+
+plt.ylabel<span class="o">(</span><span class="s1">&#39;Age (years)&#39;</span><span class="o">)</span>
+plt.title<span class="o">(</span><span class="s1">&#39;Jittered Scatter Plot of Age with Overlaid Mean and 95% CI&#39;</span><span class="o">)</span>
+plt.legend<span class="o">()</span>
+plt.tight_layout<span class="o">()</span>
+plt.show<span class="o">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://github.com/jhufena/jhufena.github.io/blob/main/png/subset_csv.png?raw=true" /></p>
+</Details>
 </section>
 
     <script type="text/x-thebe-config">
