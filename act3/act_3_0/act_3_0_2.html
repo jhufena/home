@@ -432,13 +432,8 @@ document.write(`
 </div>
 </Details>
 <p>Become the DJ of your data. Mix, remix, and let the data dance! 🎶📊🎉</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
+<Details>
+   <Summary>R Code</Summary>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loading libraries</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">gganimate</span><span class="p">)</span>
@@ -470,22 +465,90 @@ document.write(`
 <span class="nf">animate</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span><span class="w"> </span><span class="n">renderer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gifski_renderer</span><span class="p">(</span><span class="s">&quot;particle_animation.gif&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
+</Details><p><img alt="" src="https://github.com/jhutrc/jhutrc.github.io/blob/main/png/particle_animation.gif?raw=true" /></p>
+</Details>
+<p>As you run this and visualize the “Particle in a Magnetic Field”, remember, this stunning visual narrative is orchestrated not from a standalone R environment but from the cohesive .ipynb platform (which produces everythin think in this platform), showcasing the beauty of integrated tools.</p>
+<p>R is not just a language; it’s a call to create, innovate, and explore. In a world where data-driven stories resonate, let’s harmonize our tools and craft tales that inspire. 🌠🧪📈</p>
+<hr class="docutils" />
+<Details>
+   <Summary>R in a Jupyter Env</Summary>
+<p>Installing the R kernel for Jupyter notebooks allows you to run R code within the Jupyter environment. Below are the steps to install the R kernel for Jupyter notebooks:</p>
+<h3> Option 1: Using Anaconda (Recommended for Beginners)</h3>
+<ol class="arabic">
+<li><p><strong>Download and Install Anaconda</strong>: If you don’t have Anaconda installed, you can download and install it from the <a class="reference external" href="https://www.anaconda.com/products/individual">official site</a>.</p></li>
+<li><p><strong>Open Anaconda Navigator</strong>: Once installed, open the Anaconda Navigator software.</p></li>
+<li><p><strong>Install R and RStudio</strong>: Go to the <code class="docutils literal notranslate"><span class="pre">Environments</span></code> tab and create a new environment, choosing R as the language. This will also install RStudio by default.</p></li>
+<li><p><strong>Install R Kernel in Jupyter</strong>: Open a terminal from Anaconda Navigator and run the following command to install the R kernel:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">r</span><span class="o">-</span><span class="n">irkernel</span>
+</pre></div>
 </div>
-</details>
+</li>
+<li><p><strong>Open Jupyter Notebook</strong>: Now, if you start Jupyter Notebook, you should be able to create a new notebook with R.</p></li>
+</ol>
+<h3> Option 2: Using the Command Line</h3>
+<ol class="arabic">
+<li><p><strong>Install R</strong>: If you haven’t installed R yet, download and install it from <a class="reference external" href="https://cran.r-project.org/">CRAN</a>.</p></li>
+<li><p><strong>Install R Kernel</strong>: Open an R terminal and run the following commands to install the R kernel:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;IRkernel&#39;</span><span class="p">)</span>
+<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">(</span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Restart Jupyter Notebook</strong>: If you already have a Jupyter Notebook session running, you’ll need to restart it.</p></li>
+</ol>
+<h3> Option 3: Using a Package Manager (e.g., Homebrew for macOS)</h3>
+<ol class="arabic">
+<li><p><strong>Install R</strong>: Use Homebrew to install R:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>R
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install R Kernel</strong>: As in Option 2, open an R terminal and install the IRkernel package.</p></li>
+</ol>
+<p>Now, when you open a new Jupyter Notebook, you should see the option to create a notebook using the R kernel.</p>
+<p>That’s it! You should now be able to use Jupyter Notebooks for your R programming tasks.</p>
+</Details>
+<Details>
+   <Summary>Load Packages</Summary>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install and load a package</span>
+<span class="n">install_and_load</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span><span class="w"> </span><span class="n">character.only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">install.packages</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span><span class="w"> </span><span class="n">character.only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">warn.conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1"># List of packages to install and load</span>
+<span class="n">packages</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;icdpicr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;readr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tidyr&quot;</span><span class="p">)</span>
+
+<span class="c1"># Suppress warnings and install/load each package</span>
+<span class="nf">suppressWarnings</span><span class="p">({</span>
+<span class="w">  </span><span class="nf">for </span><span class="p">(</span><span class="n">pkg</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">packages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nf">install_and_load</span><span class="p">(</span><span class="n">pkg</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_path()`: Each group consists of only one observation.
-<span class=" -Color -Color-Cyan">i</span> Do you need to adjust the <span class=" -Color -Color-Green">group</span> aesthetic?
-`geom_path()`: Each group consists of only one observation.
-<span class=" -Color -Color-Cyan">i</span> Do you need to adjust the <span class=" -Color -Color-Green">group</span> aesthetic?
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
 </pre></div>
 </div>
 </div>
 </div>
-<p><img alt="" src="https://github.com/jhutrc/jhutrc.github.io/blob/main/png/particle_animation.gif?raw=true" /></p>
-</Details>
-<p>As you run this and visualize the “Particle in a Magnetic Field”, remember, this stunning visual narrative is orchestrated not from a standalone R environment but from the cohesive .ipynb platform (which produces everythin think in this platform), showcasing the beauty of integrated tools.</p>
-<p>R is not just a language; it’s a call to create, innovate, and explore. In a world where data-driven stories resonate, let’s harmonize our tools and craft tales that inspire. 🌠🧪📈</p>
-</section>
+</Details></section>
 
     <script type="text/x-thebe-config">
     {
